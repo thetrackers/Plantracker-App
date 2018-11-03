@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BaseApplication</string>
+    <string name="app_name">Plant Trackers</string>
+    <string name="app_title">Gardens</string>
 </resources>
