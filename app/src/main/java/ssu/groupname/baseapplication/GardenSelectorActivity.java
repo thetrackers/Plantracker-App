@@ -18,6 +18,7 @@ import ssu.groupname.baseapplication.network.UserSearchAsyncTask;
 public class GardenSelectorActivity extends AppCompatActivity {
 
     private RecyclerView myGardenRecyclerView;
+    private Button viewGardensButton;
     private User myUser;
 
     @Override
@@ -25,13 +26,30 @@ public class GardenSelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garden_selector);
 
+
+
         //Here we use UserSearchAsyncTask to get the info from the server
-
-
         myGardenRecyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
         myGardenRecyclerView.setLayoutManager(layoutManager);
 
+        viewGardensButton = findViewById(R.id.show_gardens_button);
+        viewGardensButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserSearchAsyncTask task = new UserSearchAsyncTask();
+                task.setListener(new UserSearchAsyncTask.UserCallbackListener() {
+                    @Override
+                    public void onUserCallback(User user) {
+                        GardenViewAdapter adapter = new GardenViewAdapter(user);
+                        myGardenRecyclerView.setAdapter(adapter);
+                        myUser = user;
+                    }
+                });
+                task.execute("GET USER INFO BY USER ID (don't need zone info here");
+            }
+        });
+        /*
         UserSearchAsyncTask task = new UserSearchAsyncTask();
         task.setListener(new UserSearchAsyncTask.UserCallbackListener() {
             @Override
@@ -41,6 +59,7 @@ public class GardenSelectorActivity extends AppCompatActivity {
                 myUser = user;
             }
         });
+        */
 
         //GardenViewAdapter adapter = new GardenViewAdapter(myUser);
         //myGardenRecyclerView.setAdapter(adapter);
@@ -67,8 +86,8 @@ public class GardenSelectorActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(GardenSelectorActivity.this, ZoneViewActivity.class);
-                    //intent.putExtra(garden);
-                    //startActivity(intent);
+                    intent.putExtra("GARDEN_ID", garden.getId());
+                    startActivity(intent);
                 }
             });
         }
@@ -99,3 +118,4 @@ public class GardenSelectorActivity extends AppCompatActivity {
         public int getItemCount() {return myUser.getGardens().size();}
     }
 }
+

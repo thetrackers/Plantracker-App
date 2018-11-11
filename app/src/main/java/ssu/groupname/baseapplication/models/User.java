@@ -7,7 +7,7 @@ public class User {
     private String myFirstName;
     private String myLastName;
     private int myUserId;
-    private int myTelephoneNumber;  //telephone number
+    private String myTelephoneNumber;  //telephone number
     //private int myPassword; //no security right now
 
     //List of Gardens
@@ -17,6 +17,6 @@ public class User {
     public String getFirstName() {return myFirstName;}
     public String getLastName() {return myLastName;}
     public int getId() {return myUserId;}
-    public int getTelephoneNumber() {return myTelephoneNumber;}
+    public String getTelephoneNumber() {return myTelephoneNumber;}
     public List<Garden> getGardens() {return myGardens;}
 }

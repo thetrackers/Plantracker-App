@@ -6,24 +6,20 @@ import java.io.IOException;
 import java.util.List;
 
 import okhttp3.Response;
+import ssu.groupname.baseapplication.models.Garden;
 import ssu.groupname.baseapplication.models.User;
+import ssu.groupname.baseapplication.utils.GardenParser;
 import ssu.groupname.baseapplication.utils.UserParser;
 
-public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
+public class GardenSearchAsyncTask extends AsyncTask<String, Void, Garden> {
 
     //private final String baseUrl = "SERVERURL"; //put server URL in resources later;
     //no security right now so no user id + password;
 
-    private UserCallbackListener myListener;
+    private GardenCallbackListener myListener;
 
     //sample JSON string for testing without server connection
     private final String testResponse = "{\n" +
-            "  \"myFirstName\": \"Billy\",\n" +
-            "  \"myLastName\": \"Bob\",\n" +
-            "  \"myUserId\": \"1\",\n" +
-            "  \"myTelephoneNumber\": \"7077011107\",\n" +
-            "  \"myGardens\": [\n" +
-            "    {\n" +
             "      \"myGardenName\": \"My Garden\",\n" +
             "      \"myGardenId\": \"2\",\n" +
             "      \"myZones\": [\n" +
@@ -50,13 +46,11 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
             "          ]\n" +
             "        }\n" +
             "      ]\n" +
-            "    }\n" +
-            "  ]\n" +
             "}";
 
     @Override
-    protected User doInBackground(String... params) {
-        String searchParam = params[0]; //user id
+    protected Garden doInBackground(String... params) {
+        String searchParam = params[0]; //garden id
 
         //OkHttpClient client = new OkHttpClient();
         //HttpUrl.parse(baseUrl).newBuilder()
@@ -76,17 +70,17 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
             e.printStackTrace();
         } */
 
-        return UserParser.userFromJson(testResponse);
+        return GardenParser.gardenFromJson(testResponse);
 
         //return null;
     }
 
     @Override
-    protected void onPostExecute(User user) {myListener.onUserCallback(user);}
+    protected void onPostExecute(Garden garden) {myListener.onGardenCallback(garden);}
 
-    public void setListener(UserCallbackListener listener) {this.myListener = listener;}
+    public void setListener(GardenCallbackListener listener) {this.myListener = listener;}
 
-    public interface UserCallbackListener {
-        void onUserCallback(User user);
+    public interface GardenCallbackListener {
+        void onGardenCallback(Garden garden);
     }
 }

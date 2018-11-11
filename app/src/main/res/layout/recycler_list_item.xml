@@ -5,7 +5,7 @@
 
     <Button
         android:id="@+id/garden_button"
-        android:layout_width="400dp"
-        android:layout_height="400dp" />
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
 </android.support.constraint.ConstraintLayout>
