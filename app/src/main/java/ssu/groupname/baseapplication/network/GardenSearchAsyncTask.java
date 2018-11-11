@@ -1,10 +1,8 @@
 package ssu.groupname.baseapplication.network;
 
 import android.os.AsyncTask;
-
 import java.io.IOException;
 import java.util.List;
-
 import okhttp3.Response;
 import ssu.groupname.baseapplication.models.Garden;
 import ssu.groupname.baseapplication.models.User;
@@ -14,11 +12,10 @@ import ssu.groupname.baseapplication.utils.UserParser;
 public class GardenSearchAsyncTask extends AsyncTask<String, Void, Garden> {
 
     //private final String baseUrl = "SERVERURL"; //put server URL in resources later;
-    //no security right now so no user id + password;
 
     private GardenCallbackListener myListener;
 
-    //sample JSON string for testing without server connection
+    //sample hardcoded JSON string for testing without server connection
     private final String testResponse = "{\n" +
             "      \"myGardenName\": \"My Garden\",\n" +
             "      \"myGardenId\": \"2\",\n" +
@@ -37,9 +34,43 @@ public class GardenSearchAsyncTask extends AsyncTask<String, Void, Garden> {
             "              \"myReadings\": [\n" +
             "                {\n" +
             "                  \"mySensorId\": \"4\",\n" +
-            "                  \"myTimestamp\": \"2016-11-23 15:55:22.291\",\n" +
+            "                  \"myTimestamp\": \"1541902831655\",\n" +
             "                  \"myTemperature\": \"75\",\n" +
             "                  \"myHumidity\": \"70\"\n" +
+            "                },\n" +
+            "                {\n" +
+            "                  \"mySensorId\": \"5\",\n" +
+            "                  \"myTimestamp\": \"1541902931655\",\n" +
+            "                  \"myTemperature\": \"80\",\n" +
+            "                  \"myHumidity\": \"65\"\n" +
+            "                }\n" +
+            "              ]\n" +
+            "            }\n" +
+            "          ]\n" +
+            "        },\n" +
+            "        {\n" +
+            "          \"myZoneName\": \"My Potatoes\",\n" +
+            "          \"myZoneId\": \"6\",\n" +
+            "          \"myHighTemperatureThreshold\": \"125\",\n" +
+            "          \"myLowTemperatureThreshold\": \"10\",\n" +
+            "          \"myHighHumidityThreshold\": \"70\",\n" +
+            "          \"myLowHumidityThreshold\": \"20\",\n" +
+            "          \"mySensors\": [\n" +
+            "            {\n" +
+            "              \"mySensorName\": \"Potato 1\",\n" +
+            "              \"mySensorId\": \"7\",\n" +
+            "              \"myReadings\": [\n" +
+            "                {\n" +
+            "                  \"mySensorId\": \"7\",\n" +
+            "                  \"myTimestamp\": \"1541902831655\",\n" +
+            "                  \"myTemperature\": \"70\",\n" +
+            "                  \"myHumidity\": \"60\"\n" +
+            "                },\n" +
+            "                {\n" +
+            "                  \"mySensorId\": \"7\",\n" +
+            "                  \"myTimestamp\": \"1541902931655\",\n" +
+            "                  \"myTemperature\": \"60\",\n" +
+            "                  \"myHumidity\": \"80\"\n" +
             "                }\n" +
             "              ]\n" +
             "            }\n" +
@@ -50,7 +81,7 @@ public class GardenSearchAsyncTask extends AsyncTask<String, Void, Garden> {
 
     @Override
     protected Garden doInBackground(String... params) {
-        String searchParam = params[0]; //garden id
+        String gardenId = params[0]; //garden id
 
         //OkHttpClient client = new OkHttpClient();
         //HttpUrl.parse(baseUrl).newBuilder()
@@ -71,8 +102,6 @@ public class GardenSearchAsyncTask extends AsyncTask<String, Void, Garden> {
         } */
 
         return GardenParser.gardenFromJson(testResponse);
-
-        //return null;
     }
 
     @Override

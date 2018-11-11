@@ -1,10 +1,8 @@
 package ssu.groupname.baseapplication.network;
 
 import android.os.AsyncTask;
-
 import java.io.IOException;
 import java.util.List;
-
 import okhttp3.Response;
 import ssu.groupname.baseapplication.models.User;
 import ssu.groupname.baseapplication.utils.UserParser;
@@ -12,11 +10,10 @@ import ssu.groupname.baseapplication.utils.UserParser;
 public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
 
     //private final String baseUrl = "SERVERURL"; //put server URL in resources later;
-    //no security right now so no user id + password;
 
     private UserCallbackListener myListener;
 
-    //sample JSON string for testing without server connection
+    //sample hardcoded JSON string for testing without server connection
     private final String testResponse = "{\n" +
             "  \"myFirstName\": \"Billy\",\n" +
             "  \"myLastName\": \"Bob\",\n" +
@@ -41,7 +38,7 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
             "              \"myReadings\": [\n" +
             "                {\n" +
             "                  \"mySensorId\": \"4\",\n" +
-            "                  \"myTimestamp\": \"2016-11-23 15:55:22.291\",\n" +
+            "                  \"myTimestamp\": \"1541902831655\",\n" +
             "                  \"myTemperature\": \"75\",\n" +
             "                  \"myHumidity\": \"70\"\n" +
             "                }\n" +
@@ -56,7 +53,7 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
 
     @Override
     protected User doInBackground(String... params) {
-        String searchParam = params[0]; //user id
+        String userId = params[0]; //user id
 
         //OkHttpClient client = new OkHttpClient();
         //HttpUrl.parse(baseUrl).newBuilder()
@@ -77,8 +74,6 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
         } */
 
         return UserParser.userFromJson(testResponse);
-
-        //return null;
     }
 
     @Override

@@ -26,13 +26,12 @@ public class GardenSelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garden_selector);
 
-
-
         //Here we use UserSearchAsyncTask to get the info from the server
         myGardenRecyclerView = findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getBaseContext());
         myGardenRecyclerView.setLayoutManager(layoutManager);
-
+        //Button to get garden info, later we will do this automatically
+        //with the stored userId or have the user enter their id
         viewGardensButton = findViewById(R.id.show_gardens_button);
         viewGardensButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,20 +48,6 @@ public class GardenSelectorActivity extends AppCompatActivity {
                 task.execute("GET USER INFO BY USER ID (don't need zone info here");
             }
         });
-        /*
-        UserSearchAsyncTask task = new UserSearchAsyncTask();
-        task.setListener(new UserSearchAsyncTask.UserCallbackListener() {
-            @Override
-            public void onUserCallback(User user) {
-                GardenViewAdapter adapter = new GardenViewAdapter(user);
-                myGardenRecyclerView.setAdapter(adapter);
-                myUser = user;
-            }
-        });
-        */
-
-        //GardenViewAdapter adapter = new GardenViewAdapter(myUser);
-        //myGardenRecyclerView.setAdapter(adapter);
     }
 
 
@@ -75,13 +60,11 @@ public class GardenSelectorActivity extends AppCompatActivity {
 
         public GardenViewHolder(View UserView) {
             super(UserView);
-
             myGardenImageButton = UserView.findViewById(R.id.garden_button);
         }
 
         public void bindView(Garden garden) {
             myGardenImageButton.setText(garden.getName());
-
             myGardenImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

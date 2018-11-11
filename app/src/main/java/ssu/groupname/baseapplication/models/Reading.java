@@ -7,12 +7,12 @@ public class Reading {
     private int mySensorId;  //necessary in sending reading to server,
                             // but not in receiving?
     //private Timestamp myTimestamp;
-    private String myTimestamp; //FOR NOW using String for Timestamp
+    private long myTimestamp; //Milliseconds since Jan 1 1970, according to Java Date standard
     private int myTemperature;
     private int myHumidity;
 
     //Getters
-    public String getTimestamp() {return myTimestamp;}
+    public long getTimestamp() {return myTimestamp;}
     public int getTemperature() {return myTemperature;}
     public int getHumidity() {return myHumidity;}
 }

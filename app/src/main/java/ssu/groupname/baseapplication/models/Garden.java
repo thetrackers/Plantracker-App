@@ -9,7 +9,7 @@ import java.util.List;
 //serializable, or parcelable.  Serialization is SLOW so we implement parcelable
 //You cannot just pass object references via intent because different activities
 //run on different processes with different memory spaces
-public class Garden implements Parcelable {
+public class Garden  {
     //Name & ID
     private String myGardenName;
     private int myGardenId;
@@ -22,7 +22,7 @@ public class Garden implements Parcelable {
     public int getId() {return myGardenId;}
     public List<Zone> getZones() {return myZones;}
 
-
+    /*
     //Must implement this method to implement Parcelable
     @Override
     public int describeContents() {
@@ -50,4 +50,5 @@ public class Garden implements Parcelable {
         myGardenId = parcel.readInt();
         //myZones = parcel.readList();
     }
+    */
 }

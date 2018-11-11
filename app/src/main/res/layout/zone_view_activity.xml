@@ -1,108 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- THIS IS THE MAIN LAYOUT FOR THE WHOLE PAGE, MINUS THE HEADER-->
-    <LinearLayout
-        android:id="@+id/zone_view"
+
+    <TabHost
+        android:id="@+id/tab_host"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
-        <!--THIS IS WHERE WE PUT THE ZONE SELECTOR-->
-        <!--FOR NOW, ASSUME EACH GARDEN HAS ONLY ONE ZONE AND PUT IN HEADER-->
-        <!--FOR NOW, DISPLAY ZONE NAME AS A TEXT ELEMENT-->
-        <TextView
-            android:id="@+id/zone_selector"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"/>
-
-
-
-        <!--THIS IS WHERE WE DISPLAY THE LIVE READINGS, TEMP & HUMIDITY w/ AN ICON FOR EACH-->
         <LinearLayout
-            android:id="@+id/live_readings"
+            android:id="@+id/zone_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="vertical">
 
-            <!--THIS IS WHERE WE DISPLAY THE CURRENT TEMPERATURE READING-->
-            <!--UNDERNEATH AN ICON, e.g. a thermometer or green check or red x-->
+            <!--Zone Select Strip-->
             <LinearLayout
-                android:id="@+id/live_temperature"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical"
-                >
-
-                <!--ICON e.g. THERMOMETER FOR REPRESENTING TEMP GOOD/BAD-->
-                <ImageView
-                    android:id="@+id/live_temperature_icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"/>
-
-                <!--TEXT e.g. 75 degrees FOR DISPLAYING ACTUAL RECENT VALUE-->
+                android:id="@+id/zone_selector_strip"
+                android:layout_width="match_parent"
+                android:layout_height="75dp">
+                <Button
+                    android:id="@+id/previous_zone_button"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent" />
                 <TextView
-                    android:id="@+id/live_temperature_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"/>
-
+                    android:id="@+id/zone_selector"
+                    android:textAlignment="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"/>
+                <Button
+                    android:id="@+id/next_zone_button"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent" />
             </LinearLayout>
 
-            <!--THIS IS WHERE WE DISPLAY THE CURRENT HUMIDITY READING-->
-            <!--UNDERNEATH AN ICON, e.g. a water drop or green check or red x-->
-            <LinearLayout
-                android:id="@+id/live_humidity"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="vertical"
-                >
+            <!--This is the frame that the tabs switch-->
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-                <!--ICON e.g. WATER DROPLET FOR REPRESENTING HUMIDITY GOOD OR BAD-->
-                <ImageView
-                    android:id="@+id/live_humidity_icon"
+                <!-- TAB 1 -->
+                <LinearLayout
+                    android:id="@+id/tab1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"/>
+                    android:orientation="vertical">
 
-                <!--TEXT e.g. 68% FOR DISPLAYING ACTUAL RECENT VALUE-->
-                <TextView
-                    android:id="@+id/live_humidity_text"
+                    <!--Current Readings Strip-->
+                    <LinearLayout
+                        android:id="@+id/live_readings"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_margin="8dp"
+                        android:orientation="horizontal"
+                        >
+        
+                        <!--Current Temperature-->
+                        <LinearLayout
+                            android:id="@+id/live_temperature"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical"
+                            >
+        
+                            <!--ICON e.g. THERMOMETER FOR REPRESENTING TEMP GOOD/BAD-->
+                            <ImageView
+                                android:id="@+id/live_temperature_icon"
+                                android:src="@drawable/thermometer"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_margin="4dp"/>
+        
+                            <!--TEXT e.g. 75 degrees FOR DISPLAYING ACTUAL RECENT VALUE-->
+                            <TextView
+                                android:id="@+id/live_temperature_text"
+                                android:textAlignment="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp" />
+        
+                        </LinearLayout>
+        
+                        <!--Current Humidity-->
+                        <LinearLayout
+                            android:id="@+id/live_humidity"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:orientation="vertical"
+                            >
+        
+                            <!--ICON e.g. WATER DROPLET FOR REPRESENTING HUMIDITY GOOD OR BAD-->
+                            <ImageView
+                                android:id="@+id/live_humidity_icon"
+                                android:src="@drawable/water_droplet"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_margin="4dp"/>
+        
+                            <!--TEXT e.g. 68% FOR DISPLAYING ACTUAL RECENT VALUE-->
+                            <TextView
+                                android:id="@+id/live_humidity_text"
+                                android:textAlignment="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"/>
+        
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--Graph-->
+                    <com.jjoe64.graphview.GraphView
+                        android:id="@+id/graph"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"/>
+                </LinearLayout>
+
+                <!-- TAB 2 -->
+                <LinearLayout
+                    android:id="@+id/tab2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"/>
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <!--Temperature Column-->
+                    <LinearLayout
+                        android:id="@+id/temperature_thresholds"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Column Header -->
+                        <ImageView
+                            android:id="@+id/temperature_threshold_icon"
+                            android:src="@drawable/thermometer"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                        <TextView
+                            android:id="@+id/temperature_header"
+                            android:text="Temperature"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                        <!--High-->
+                        <TextView
+                            android:id="@+id/high_temperature_header"
+                            android:text="High Threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp" />
+                        <TextView
+                            android:id="@+id/high_temperature_threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                        <!--Low-->
+                        <TextView
+                            android:id="@+id/low_temperature_header"
+                            android:text="Low Threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp" />
+                        <TextView
+                            android:id="@+id/low_temperature_threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                    </LinearLayout>
+
+                    <!--Humidity Column-->
+                    <LinearLayout
+                        android:id="@+id/humidity_thresholds"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!--Header-->
+                        <ImageView
+                            android:id="@+id/humidity_threshold_icon"
+                            android:src="@drawable/water_droplet"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"/>
+                        <TextView
+                            android:id="@+id/humidity_header"
+                            android:text="Humidity"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                        <!--High-->
+                        <TextView
+                            android:id="@+id/high_humidity_header"
+                            android:text="High Threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp" />
+                        <TextView
+                            android:id="@+id/high_humidity_threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                        <!--Low-->
+                        <TextView
+                            android:id="@+id/low_humidity_header"
+                            android:text="Low Threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp" />
+                        <TextView
+                            android:id="@+id/low_humidity_threshold"
+                            android:textAlignment="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!--Tab Strip-->
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"></TabWidget>
+
         </LinearLayout>
-
-        <!--THIS IS WHERE WE PUT THE GRAPH.  LET'S USE com.jjoe64:graphview:4.2.2-->
-        <!--FROM http://www.android-graphview.org... I put ImageView element FOR NOW-->
-        <TextView
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"/>
-
-        <!--THIS IS WHERE WE PUT THE TAB SELECTOR-->
-        <!--TAB 1:  ZONE VIEW LIVE+HISTORICAL, TAB 2: THESHOLD VIEWER/SETTER-->
-        <!--WILL IMPLEMENT LATER, AFTER CREATION OF THRESHOLDS PAGE-->
-        <!--WILL PUT THE ENTER ZONE_VIEW IN A TABHOST, THEN PUT A TABWIDGET AT THE BOTTOM-->
-
-    </LinearLayout>
+    </TabHost>
 
     <!--NO NEED TO PUT A BACK OR HOME BUTTON SINCE ANDROID INCLUDES THIS-->
-
 
 </android.support.constraint.ConstraintLayout>
