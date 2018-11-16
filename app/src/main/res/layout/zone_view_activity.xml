@@ -4,11 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/field">
 
 
     <TabHost
         android:id="@+id/tab_host"
+        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -22,16 +24,19 @@
             <!--Zone Select Strip-->
             <LinearLayout
                 android:id="@+id/zone_selector_strip"
+
                 android:layout_width="match_parent"
                 android:layout_height="75dp">
                 <Button
                     android:id="@+id/previous_zone_button"
+
                     android:layout_width="75dp"
                     android:layout_height="match_parent"
                     />
                 <TextView
                     android:id="@+id/zone_selector"
                     android:textAlignment="center"
+                    android:textColor="@color/textcolor"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
@@ -46,12 +51,14 @@
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
+
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
                 <!-- TAB 1 -->
                 <LinearLayout
                     android:id="@+id/tab1"
+                    android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -60,6 +67,7 @@
                     <!--Current Readings Strip-->
                     <LinearLayout
                         android:id="@+id/live_readings"
+                        android:background="@color/colorPrimaryDark"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_margin="8dp"
@@ -69,6 +77,7 @@
                         <!--Current Temperature-->
                         <LinearLayout
                             android:id="@+id/live_temperature"
+                            android:background="@color/colorPrimaryDark"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="match_parent"
@@ -89,6 +98,7 @@
                             <TextView
                                 android:id="@+id/live_temperature_text"
                                 android:textAlignment="center"
+                                android:textColor="@color/textcolor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp" />
@@ -99,6 +109,7 @@
                         <LinearLayout
                             android:id="@+id/live_humidity"
                             android:layout_width="0dp"
+                            android:background="@color/colorPrimaryDark"
                             android:layout_weight="1"
                             android:layout_height="match_parent"
                             android:layout_margin="8dp"
@@ -118,6 +129,7 @@
                             <TextView
                                 android:id="@+id/live_humidity_text"
                                 android:textAlignment="center"
+                                android:textColor="@color/textcolor"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="4dp"/>
@@ -130,12 +142,14 @@
                         android:id="@+id/graph"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
                         android:layout_margin="4dp"/>
                 </LinearLayout>
 
                 <!-- TAB 2 -->
                 <LinearLayout
                     android:id="@+id/tab2"
+                    android:background="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -144,6 +158,7 @@
                     <LinearLayout
                         android:id="@+id/temperature_thresholds"
                         android:layout_width="0dp"
+                        android:outlineAmbientShadowColor="@color/graphbackground"
                         android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -158,6 +173,7 @@
                         <TextView
                             android:id="@+id/temperature_header"
                             android:text="Temperature"
+                            android:textColor="@color/textcolor"
                             android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
@@ -167,11 +183,13 @@
                             android:id="@+id/high_temperature_header"
                             android:text="High Threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="50dp" />
                         <TextView
                             android:id="@+id/high_temperature_threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
 
@@ -180,11 +198,13 @@
                             android:id="@+id/low_temperature_header"
                             android:text="Low Threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="50dp" />
                         <TextView
                             android:id="@+id/low_temperature_threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
 
@@ -208,6 +228,7 @@
                         <TextView
                             android:id="@+id/humidity_header"
                             android:text="Humidity"
+                            android:textColor="@color/textcolor"
                             android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
@@ -216,12 +237,14 @@
                         <TextView
                             android:id="@+id/high_humidity_header"
                             android:text="High Threshold"
+                            android:textColor="@color/textcolor"
                             android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="50dp" />
                         <TextView
                             android:id="@+id/high_humidity_threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
 
@@ -229,12 +252,14 @@
                         <TextView
                             android:id="@+id/low_humidity_header"
                             android:text="Low Threshold"
+                            android:textColor="@color/textcolor"
                             android:textAlignment="center"
                             android:layout_width="match_parent"
                             android:layout_height="50dp" />
                         <TextView
                             android:id="@+id/low_humidity_threshold"
                             android:textAlignment="center"
+                            android:textColor="@color/textcolor"
                             android:layout_width="match_parent"
                             android:layout_height="100dp" />
 
