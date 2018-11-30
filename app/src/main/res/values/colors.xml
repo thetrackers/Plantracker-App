@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#86008577</color>
-    <color name="colorPrimaryDark">#3400574b</color>
+    <color name="colorPrimary">#9b006826</color>
+    <color name="colorPrimaryDark">#7500574b</color>
     <color name="colorAccent">#e10b26de</color>
-    <color name="textcolor">#460000</color>
-    <color name="graphbackground">#000000</color>
+    <color name="textcolor">#1a0000</color>
+    <color name="graphbackground">#5bf1efef</color>
+    <color name="tabcolor">#9bf1efef</color>
 </resources>

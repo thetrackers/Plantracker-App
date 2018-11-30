@@ -6,6 +6,9 @@
 
     <Button
         android:id="@+id/garden_button"
+        android:fontFamily="cursive"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="#38ff0000"/>
