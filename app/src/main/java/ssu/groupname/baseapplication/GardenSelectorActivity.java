@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import ssu.groupname.baseapplication.models.Garden;
 import ssu.groupname.baseapplication.models.User;
@@ -19,12 +20,15 @@ public class GardenSelectorActivity extends AppCompatActivity {
 
     private RecyclerView myGardenRecyclerView;
     private Button viewGardensButton;
+    private EditText myUsernameEditText;
     private User myUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garden_selector);
+
+        myUsernameEditText = findViewById(R.id.enter_username_edittext);
 
         //Here we use UserSearchAsyncTask to get the info from the server
         myGardenRecyclerView = findViewById(R.id.recycler_view);
@@ -45,7 +49,7 @@ public class GardenSelectorActivity extends AppCompatActivity {
                         myUser = user;
                     }
                 });
-                task.execute("GET USER INFO BY USER ID (don't need zone info here");
+                task.execute(myUsernameEditText.getText().toString());
             }
         });
     }

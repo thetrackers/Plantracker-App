@@ -22,4 +22,10 @@ public class Zone {
     public int getHighHumidityThreshold() {return myHighHumidityThreshold;}
     public int getLowHumidityThreshold() {return myLowHumidityThreshold;}
     public List<Sensor> getSensors() {return mySensors;}
+
+    //Setters
+    public void setHighTemperatureThreshold(int newThreshold) {myHighTemperatureThreshold = newThreshold;}
+    public void setLowTemperatureThreshold(int newThreshold) {myLowTemperatureThreshold = newThreshold;}
+    public void setHighHumidityThreshold(int newThreshold) {myHighHumidityThreshold = newThreshold;}
+    public void setLowHumidityThreshold(int newThreshold) {myLowHumidityThreshold = newThreshold;}
 }
