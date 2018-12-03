@@ -288,16 +288,16 @@ public class ZoneViewActivity extends AppCompatActivity {
         myGraphView.getGridLabelRenderer().setPadding(50);
         //Set bounds and labels for temperature
         myGraphView.getViewport().setYAxisBoundsManual(true);
-        myGraphView.getViewport().setMinY(0);
-        myGraphView.getViewport().setMaxY(100);
+        myGraphView.getViewport().setMinY(zone.getLowTemperatureThreshold());
+        myGraphView.getViewport().setMaxY(zone.getHighTemperatureThreshold());
         myGraphView.getGridLabelRenderer().setVerticalLabelsColor(Color.RED);
         myGraphView.getGridLabelRenderer().setVerticalAxisTitle("Temperature (F)");
         myGraphView.getGridLabelRenderer().setVerticalAxisTitleColor(Color.RED);
         myGraphView.getGridLabelRenderer().setVerticalAxisTitleTextSize(50);
         myGraphView.getGridLabelRenderer().setLabelVerticalWidth(20);
         //Set bounds and labels for humidity
-        myGraphView.getSecondScale().setMinY(0);
-        myGraphView.getSecondScale().setMaxY(100);
+        myGraphView.getSecondScale().setMinY(zone.getLowHumidityThreshold());
+        myGraphView.getSecondScale().setMaxY(zone.getHighHumidityThreshold());
         myGraphView.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.BLUE);
         //myGraphView.getGridLabelRenderer().setSecondScaleLabelVerticalWidth(myGraphView.getGridLabelRenderer().getLabelVerticalWidth());
         //Set default X bound for 24 hours from latest reading
