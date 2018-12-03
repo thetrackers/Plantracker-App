@@ -21,7 +21,63 @@ public class UserSearchAsyncTask extends AsyncTask<String, Void, User> {
             "  \"myTelephoneNumber\": \"7077011107\",\n" +
             "  \"myGardens\": [\n" +
             "    {\n" +
-            "      \"myGardenName\": \"My Garden\",\n" +
+            "      \"myGardenName\": \"Sonoma Veggies\",\n" +
+            "      \"myGardenId\": \"2\",\n" +
+            "      \"myZones\": [\n" +
+            "        {\n" +
+            "          \"myZoneName\": \"My Tomatoes\",\n" +
+            "          \"myZoneId\": \"3\",\n" +
+            "          \"myHighTemperatureThreshold\": \"100\",\n" +
+            "          \"myLowTemperatureThreshold\": \"50\",\n" +
+            "          \"myHighHumidityThreshold\": \"80\",\n" +
+            "          \"myLowHumidityThreshold\": \"40\",\n" +
+            "          \"mySensors\": [\n" +
+            "            {\n" +
+            "              \"mySensorName\": \"Tomato 1\",\n" +
+            "              \"mySensorId\": \"4\",\n" +
+            "              \"myReadings\": [\n" +
+            "                {\n" +
+            "                  \"mySensorId\": \"4\",\n" +
+            "                  \"myTimestamp\": \"1541902831655\",\n" +
+            "                  \"myTemperature\": \"75\",\n" +
+            "                  \"myHumidity\": \"70\"\n" +
+            "                }\n" +
+            "              ]\n" +
+            "            }\n" +
+            "          ]\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"myGardenName\": \"Napa Fruits\",\n" +
+            "      \"myGardenId\": \"2\",\n" +
+            "      \"myZones\": [\n" +
+            "        {\n" +
+            "          \"myZoneName\": \"My Tomatoes\",\n" +
+            "          \"myZoneId\": \"3\",\n" +
+            "          \"myHighTemperatureThreshold\": \"100\",\n" +
+            "          \"myLowTemperatureThreshold\": \"50\",\n" +
+            "          \"myHighHumidityThreshold\": \"80\",\n" +
+            "          \"myLowHumidityThreshold\": \"40\",\n" +
+            "          \"mySensors\": [\n" +
+            "            {\n" +
+            "              \"mySensorName\": \"Tomato 1\",\n" +
+            "              \"mySensorId\": \"4\",\n" +
+            "              \"myReadings\": [\n" +
+            "                {\n" +
+            "                  \"mySensorId\": \"4\",\n" +
+            "                  \"myTimestamp\": \"1541902831655\",\n" +
+            "                  \"myTemperature\": \"75\",\n" +
+            "                  \"myHumidity\": \"70\"\n" +
+            "                }\n" +
+            "              ]\n" +
+            "            }\n" +
+            "          ]\n" +
+            "        }\n" +
+            "      ]\n" +
+            "    },\n" +
+            "    {\n" +
+            "      \"myGardenName\": \"Sonoma Veggies\",\n" +
             "      \"myGardenId\": \"2\",\n" +
             "      \"myZones\": [\n" +
             "        {\n" +

@@ -8,5 +8,7 @@
         android:textAlignment="center"
         android:maxLines="1"
         android:textSize="40dp"
+        android:padding="5dp"
+        android:background="@drawable/border_spinner"
     />
 

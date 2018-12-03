@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ZoneViewActivity"
-    android:background="@drawable/vines"
-    >
+    tools:context=".ZoneViewActivity">
+    <!--android:background="@drawable/vines"-->
+
 
 
     <TextView
         android:id="@+id/header_textview"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:textSize="50sp"
+        android:layout_height="75dp"
+        android:textSize="65sp"
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textAllCaps="true"
-        android:text="@string/app_title" />
+        android:text="My Gardens"
+        android:fontFamily="cursive"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/enter_username_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="35sp"
         android:text="Enter username:"
+        android:layout_marginLeft="7dp"
         app:layout_constraintTop_toBottomOf="@+id/header_textview"/>
 
     <EditText
@@ -41,11 +44,12 @@
         android:id="@+id/show_gardens_button"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#38ff0000"
+        android:background="@drawable/border2"
         android:text="SHOW GARDENS"
         android:fontFamily="cursive"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="35dp"
+        android:layout_margin="15dp"
         app:layout_constraintTop_toBottomOf="@+id/enter_username_edittext"/>
 
 
@@ -54,6 +58,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:scrollbars="vertical"
+        android:scrollbarSize="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

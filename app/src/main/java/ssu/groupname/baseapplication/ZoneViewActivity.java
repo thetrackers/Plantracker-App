@@ -58,6 +58,9 @@ public class ZoneViewActivity extends AppCompatActivity {
     private GraphView myGraphView;
 
     //TAB2
+    //Headers
+    private ImageView myTemperatureThresholdImageView;
+    private ImageView myHumidityThresholdImageView;
     //Display/set thresholds
     private Spinner myHighTemperatureThreshold;
     private Spinner myLowTemperatureThreshold;
@@ -78,6 +81,8 @@ public class ZoneViewActivity extends AppCompatActivity {
         myLiveHumidityImageView = findViewById(R.id.live_humidity_icon);
         myGraphView = findViewById(R.id.graph);
         //TAB 2
+        myTemperatureThresholdImageView = findViewById(R.id.temperature_threshold_icon);
+        myHumidityThresholdImageView = findViewById(R.id.humidity_threshold_icon);
         myHighTemperatureThreshold = findViewById(R.id.high_temperature_threshold);
         myLowTemperatureThreshold = findViewById(R.id.low_temperature_threshold);
         myHighHumidityThreshold = findViewById(R.id.high_humidity_threshold);
@@ -252,22 +257,29 @@ public class ZoneViewActivity extends AppCompatActivity {
         latestTemperature /= numberOfSensors;
         latestHumidity /= numberOfSensors;
         //display latest readings
-        myLiveTemperatureTextView.setText(String.format("%.1f degrees", latestTemperature));
-        myLiveHumidityTextView.setText(String.format("%.1f percent", latestHumidity));
+        myLiveTemperatureTextView.setText(String.format("%.1f \u00b0 F", latestTemperature));
+        myLiveHumidityTextView.setText(String.format("%.1f %%", latestHumidity));
+
         //If average latest reading is outside of threshold change the icons
         if (latestTemperature > zone.getHighTemperatureThreshold()) {
             myLiveTemperatureImageView.setImageResource(R.drawable.hotthermometer);
+            myTemperatureThresholdImageView.setImageResource(R.drawable.hotthermometer);
         } else if (latestTemperature < zone.getLowTemperatureThreshold()) {
             myLiveTemperatureImageView.setImageResource(R.drawable.coldthermometer);
+            myTemperatureThresholdImageView.setImageResource(R.drawable.coldthermometer);
         } else {
             myLiveTemperatureImageView.setImageResource(R.drawable.thermometer);
+            myTemperatureThresholdImageView.setImageResource(R.drawable.thermometer);
         }
         if (latestHumidity > zone.getHighHumidityThreshold()) {
             myLiveHumidityImageView.setImageResource(R.drawable.water_drop_full);
+            myHumidityThresholdImageView.setImageResource(R.drawable.water_drop_full);
         } else if (latestHumidity < zone.getLowHumidityThreshold()) {
             myLiveHumidityImageView.setImageResource(R.drawable.water_drop_empty);
+            myHumidityThresholdImageView.setImageResource(R.drawable.water_drop_empty);
         } else {
             myLiveHumidityImageView.setImageResource(R.drawable.water_droplet);
+            myHumidityThresholdImageView.setImageResource(R.drawable.water_droplet);
         }
 
 

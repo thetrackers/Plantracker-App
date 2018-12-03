@@ -28,6 +28,9 @@ public class GardenSelectorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.garden_selector);
 
+        //Set background image so that it does not resize on keyboard pop-up
+        getWindow().setBackgroundDrawableResource(R.drawable.vines);
+
         myUsernameEditText = findViewById(R.id.enter_username_edittext);
 
         //Here we use UserSearchAsyncTask to get the info from the server
