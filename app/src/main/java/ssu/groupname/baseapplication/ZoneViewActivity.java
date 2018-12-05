@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
+import android.support.design.widget.Snackbar;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
@@ -41,9 +43,9 @@ public class ZoneViewActivity extends AppCompatActivity {
     private TabHost myTabHost;
 
     //strip to display zone name and switch zones
-    private Button myPreviousZoneButton;
+    private ImageButton myPreviousZoneButton;
     private TextView myZoneNameTextView;
-    private Button myNextZoneButton;
+    private ImageButton myNextZoneButton;
     private int myZoneIndex = 0; //by default we view the first zone in the garden
     private int myNumZones = 0;  //we need these variables to iterate through zone list
 
@@ -164,30 +166,30 @@ public class ZoneViewActivity extends AppCompatActivity {
                 myZoneNameTextView = findViewById(R.id.zone_selector);
                 myNextZoneButton = findViewById(R.id.next_zone_button);
                 myNumZones = myGarden.getZones().size();
-                myPreviousZoneButton.setText("X");
+                myPreviousZoneButton.setImageResource(R.drawable.rustic_sign_end);
                 myPreviousZoneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (myZoneIndex > 0) {
                             myZoneIndex--;
-                            myNextZoneButton.setText(">");
+                            myNextZoneButton.setImageResource(R.drawable.rustic_sign_right);
                             if (myZoneIndex == 0) {
-                                myPreviousZoneButton.setText("X");
+                                myPreviousZoneButton.setImageResource(R.drawable.rustic_sign_end);
                             }
                             viewZone(myGarden.getZones().get(myZoneIndex));
                         }
                     }
                 });
-                if (myNumZones <= 1) { myNextZoneButton.setText("X"); }
-                else { myNextZoneButton.setText(">"); }
+                if (myNumZones <= 1) { myNextZoneButton.setImageResource(R.drawable.rustic_sign_end); }
+                else { myNextZoneButton.setImageResource(R.drawable.rustic_sign_right); }
                 myNextZoneButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (myZoneIndex < myNumZones-1) {
                             myZoneIndex++;
-                            myPreviousZoneButton.setText("<");
+                            myPreviousZoneButton.setImageResource(R.drawable.rustic_sign_left );
                             if (myZoneIndex == myNumZones-1) {
-                                myNextZoneButton.setText("X");
+                                myNextZoneButton.setImageResource(R.drawable.rustic_sign_end);
                             }
                             viewZone(myGarden.getZones().get(myZoneIndex));
                         }
@@ -257,7 +259,7 @@ public class ZoneViewActivity extends AppCompatActivity {
         latestTemperature /= numberOfSensors;
         latestHumidity /= numberOfSensors;
         //display latest readings
-        myLiveTemperatureTextView.setText(String.format("%.1f \u00b0 F", latestTemperature));
+        myLiveTemperatureTextView.setText(String.format("%.1f \u00b0 C", latestTemperature));
         myLiveHumidityTextView.setText(String.format("%.1f %%", latestHumidity));
 
         //If average latest reading is outside of threshold change the icons
@@ -328,6 +330,10 @@ public class ZoneViewActivity extends AppCompatActivity {
                     zone.setHighTemperatureThreshold(newThreshold);
                     //ALSO SEND UPDATE TO SERVER
                     viewZone(zone);
+
+                    Snackbar.make(view, "Update received",
+                            Snackbar.LENGTH_SHORT)
+                            .show();
                 }
             }
             @Override
@@ -345,6 +351,10 @@ public class ZoneViewActivity extends AppCompatActivity {
                     zone.setLowTemperatureThreshold(newThreshold);
                     //ALSO SEND UPDATE TO SERVER
                     viewZone(zone);
+
+                    Snackbar.make(view, "Update received",
+                            Snackbar.LENGTH_SHORT)
+                            .show();
                 }
             }
             @Override
@@ -362,6 +372,10 @@ public class ZoneViewActivity extends AppCompatActivity {
                     zone.setHighHumidityThreshold(newThreshold);
                     //ALSO SEND UPDATE TO SERVER
                     viewZone(zone);
+
+                    Snackbar.make(view, "Update received",
+                            Snackbar.LENGTH_SHORT)
+                            .show();
                 }
             }
             @Override
@@ -379,6 +393,10 @@ public class ZoneViewActivity extends AppCompatActivity {
                     zone.setLowHumidityThreshold(newThreshold);
                     //ALSO SEND UPDATE TO SERVER
                     viewZone(zone);
+
+                    Snackbar.make(view, "Update received",
+                            Snackbar.LENGTH_SHORT)
+                            .show();
                 }
             }
             @Override

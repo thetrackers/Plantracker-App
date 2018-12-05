@@ -26,10 +26,12 @@
                 android:id="@+id/zone_selector_strip"
                 android:layout_width="match_parent"
                 android:layout_height="75dp">
-                <Button
+                <ImageButton
                     android:id="@+id/previous_zone_button"
                     android:layout_width="75dp"
                     android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/border_column"
                     />
                 <TextView
                     android:id="@+id/zone_selector"
@@ -42,10 +44,12 @@
                     android:layout_margin="8dp"
                     android:fontFamily="cursive"
                     android:textStyle="bold"/>
-                <Button
+                <ImageButton
                     android:id="@+id/next_zone_button"
                     android:layout_width="75dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/border_column"/>
             </LinearLayout>
 
             <!--This is the frame that the tabs switch-->
